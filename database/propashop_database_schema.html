@@ -1,0 +1,132 @@
+
+<div id="erd" style="width:100%"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Georgia", serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '12px',
+    fontFamily: '"Georgia", serif',
+    lineColor: dark ? '#9c9a92' : '#73726c',
+    textColor: dark ? '#c2c0b6' : '#3d3d3a',
+    primaryColor: dark ? '#4A0F1E' : '#F5ECD7',
+    primaryBorderColor: dark ? '#8B2438' : '#6B1A2E',
+    primaryTextColor: dark ? '#F5ECD7' : '#1B2A4A',
+  },
+});
+const diagram = `erDiagram
+  USERS {
+    uuid id PK
+    string email
+    string password_hash
+    string first_name
+    string last_name
+    string phone
+    string address
+    string city
+    timestamp created_at
+  }
+  PRODUCTS {
+    uuid id PK
+    uuid collection_id FK
+    string name
+    text description
+    decimal price
+    string sku
+    string size
+    string color
+    int stock_qty
+    bool is_active
+    timestamp created_at
+  }
+  COLLECTIONS {
+    uuid id PK
+    string name
+    string slug
+    text description
+    string image_url
+    bool is_featured
+  }
+  ORDERS {
+    uuid id PK
+    uuid user_id FK
+    string status
+    decimal subtotal
+    decimal delivery_fee
+    decimal total
+    string delivery_address
+    float delivery_lat
+    float delivery_lng
+    float distance_km
+    string payment_ref
+    string payment_status
+    timestamp ordered_at
+  }
+  ORDER_ITEMS {
+    uuid id PK
+    uuid order_id FK
+    uuid product_id FK
+    int quantity
+    decimal unit_price
+  }
+  WISHLIST {
+    uuid id PK
+    uuid user_id FK
+    uuid product_id FK
+    timestamp added_at
+  }
+  PRODUCT_IMAGES {
+    uuid id PK
+    uuid product_id FK
+    string image_url
+    int sort_order
+  }
+  REVIEWS {
+    uuid id PK
+    uuid user_id FK
+    uuid product_id FK
+    int rating
+    text comment
+    timestamp created_at
+  }
+
+  USERS ||--o{ ORDERS : places
+  USERS ||--o{ WISHLIST : saves
+  USERS ||--o{ REVIEWS : writes
+  ORDERS ||--|{ ORDER_ITEMS : contains
+  PRODUCTS ||--o{ ORDER_ITEMS : included_in
+  PRODUCTS ||--o{ WISHLIST : wishlisted_in
+  PRODUCTS ||--o{ PRODUCT_IMAGES : has
+  PRODUCTS ||--o{ REVIEWS : receives
+  COLLECTIONS ||--o{ PRODUCTS : groups
+`;
+const { svg } = await mermaid.render('erd-svg', diagram);
+document.getElementById('erd').innerHTML = svg;
+document.querySelectorAll('#erd svg .node').forEach(node => {
+  const firstPath = node.querySelector('path[d]');
+  if (!firstPath) return;
+  const d = firstPath.getAttribute('d');
+  const nums = d.match(/-?[\d.]+/g)?.map(Number);
+  if (!nums || nums.length < 8) return;
+  const xs = [nums[0], nums[2], nums[4], nums[6]];
+  const ys = [nums[1], nums[3], nums[5], nums[7]];
+  const x = Math.min(...xs), y = Math.min(...ys);
+  const w = Math.max(...xs) - x, h = Math.max(...ys) - y;
+  const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', x); rect.setAttribute('y', y);
+  rect.setAttribute('width', w); rect.setAttribute('height', h);
+  rect.setAttribute('rx', '8');
+  for (const a of ['fill', 'stroke', 'stroke-width', 'class', 'style']) {
+    if (firstPath.hasAttribute(a)) rect.setAttribute(a, firstPath.getAttribute(a));
+  }
+  firstPath.replaceWith(rect);
+});
+document.querySelectorAll('#erd svg .row-rect-odd path, #erd svg .row-rect-even path').forEach(p => {
+  p.setAttribute('stroke', 'none');
+});
+</script>

@@ -1,0 +1,176 @@
+
+<style>
+  .road { font-family: Arial, sans-serif; padding: 0 0 20px; }
+  .road-header { background: #6B1A2E; padding: 18px 20px; margin-bottom: 20px; }
+  .road-header h2 { font-family: Georgia, serif; color: #F5ECD7; font-size: 16px; letter-spacing: 2px; margin: 0 0 2px; }
+  .road-header p { color: #C9A97A; font-size: 11px; letter-spacing: 1px; margin: 0; }
+  .phase { margin: 0 16px 16px; border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; }
+  .phase-head { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
+  .phase-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+  .phase-title { font-family: Georgia, serif; font-size: 14px; }
+  .phase-duration { margin-left: auto; font-size: 10px; letter-spacing: 1px; padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+  .phase-tasks { padding: 0 16px 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .task { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.4; }
+  .task-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+
+  .p1 .phase-head { background: rgba(107,26,46,0.08); }
+  .p1 .phase-num { background: #6B1A2E; color: #F5ECD7; }
+  .p1 .phase-title { color: #6B1A2E; }
+  .p1 .phase-duration { background: rgba(107,26,46,0.1); color: #6B1A2E; }
+  .p1 .task-dot { background: #6B1A2E; }
+
+  .p2 .phase-head { background: rgba(27,42,74,0.08); }
+  .p2 .phase-num { background: #1B2A4A; color: #F5ECD7; }
+  .p2 .phase-title { color: #1B2A4A; }
+  .p2 .phase-duration { background: rgba(27,42,74,0.1); color: #1B2A4A; }
+  .p2 .task-dot { background: #1B2A4A; }
+
+  .p3 .phase-head { background: rgba(201,169,122,0.12); }
+  .p3 .phase-num { background: #C9A97A; color: #1B2A4A; }
+  .p3 .phase-title { color: #8B6A3E; }
+  .p3 .phase-duration { background: rgba(201,169,122,0.2); color: #8B6A3E; }
+  .p3 .task-dot { background: #C9A97A; }
+
+  .p4 .phase-head { background: rgba(107,26,46,0.05); }
+  .p4 .phase-num { background: #8B2438; color: #F5ECD7; }
+  .p4 .phase-title { color: #8B2438; }
+  .p4 .phase-duration { background: rgba(139,36,56,0.1); color: #8B2438; }
+  .p4 .task-dot { background: #8B2438; }
+
+  .timeline { margin: 0 16px; display: flex; gap: 0; border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+  .tl-seg { flex: 1; padding: 10px 8px; text-align: center; }
+  .tl-seg .tl-label { font-size: 9px; letter-spacing: 1px; font-weight: 700; }
+  .tl-seg .tl-weeks { font-family: Georgia, serif; font-size: 14px; font-weight: 700; margin-top: 2px; }
+  .tl-total { margin: 0 16px 20px; background: var(--color-background-secondary); border-radius: 6px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .tl-total .label { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 1px; }
+  .tl-total .val { font-family: Georgia, serif; font-size: 16px; color: #6B1A2E; }
+
+  .stack-row { margin: 0 16px 20px; }
+  .stack-head { font-size: 10px; letter-spacing: 2px; color: #6B1A2E; margin-bottom: 10px; font-family: Georgia, serif; border-bottom: 0.5px solid #D4C4A8; padding-bottom: 6px; }
+  .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stack-item { background: var(--color-background-secondary); border-radius: 6px; padding: 10px 8px; text-align: center; }
+  .stack-item .si-label { font-size: 10px; color: var(--color-text-secondary); margin-bottom: 2px; }
+  .stack-item .si-val { font-family: Georgia, serif; font-size: 12px; color: var(--color-text-primary); }
+</style>
+
+<div class="road">
+  <div class="road-header">
+    <h2>DEVELOPMENT ROADMAP</h2>
+    <p>PropaShop · Mobile-First · Next.js + Node.js + PostgreSQL</p>
+  </div>
+
+  <div class="phase p1">
+    <div class="phase-head">
+      <div class="phase-num">1</div>
+      <div>
+        <div class="phase-title">Foundation &amp; Brand Setup</div>
+      </div>
+      <div class="phase-duration">WEEKS 1–2</div>
+    </div>
+    <div class="phase-tasks">
+      <div class="task"><div class="task-dot"></div>Project repo + monorepo setup</div>
+      <div class="task"><div class="task-dot"></div>Design system — brand tokens in Tailwind</div>
+      <div class="task"><div class="task-dot"></div>Logo finalised (SVG + raster exports)</div>
+      <div class="task"><div class="task-dot"></div>PostgreSQL schema + migrations</div>
+      <div class="task"><div class="task-dot"></div>Next.js app scaffold + routing</div>
+      <div class="task"><div class="task-dot"></div>Admin dashboard skeleton</div>
+    </div>
+  </div>
+
+  <div class="phase p2">
+    <div class="phase-head">
+      <div class="phase-num">2</div>
+      <div>
+        <div class="phase-title">Core Commerce Features</div>
+      </div>
+      <div class="phase-duration">WEEKS 3–5</div>
+    </div>
+    <div class="phase-tasks">
+      <div class="task"><div class="task-dot"></div>Product catalogue + collections pages</div>
+      <div class="task"><div class="task-dot"></div>Search, filter, sort functionality</div>
+      <div class="task"><div class="task-dot"></div>User auth (signup / login / JWT)</div>
+      <div class="task"><div class="task-dot"></div>Customer account + wishlist</div>
+      <div class="task"><div class="task-dot"></div>Shopping cart + checkout flow</div>
+      <div class="task"><div class="task-dot"></div>Product image upload via Cloudinary</div>
+    </div>
+  </div>
+
+  <div class="phase p3">
+    <div class="phase-head">
+      <div class="phase-num">3</div>
+      <div>
+        <div class="phase-title">Payments, Delivery &amp; Tracking</div>
+      </div>
+      <div class="phase-duration">WEEKS 6–8</div>
+    </div>
+    <div class="phase-tasks">
+      <div class="task"><div class="task-dot"></div>PayFast or Yoco payment gateway</div>
+      <div class="task"><div class="task-dot"></div>Payment webhooks + order confirmation</div>
+      <div class="task"><div class="task-dot"></div>Google Maps Distance Matrix API</div>
+      <div class="task"><div class="task-dot"></div>Free 5km zone + per-km pricing logic</div>
+      <div class="task"><div class="task-dot"></div>Order tracking page (status pipeline)</div>
+      <div class="task"><div class="task-dot"></div>SendGrid email notifications</div>
+    </div>
+  </div>
+
+  <div class="phase p4">
+    <div class="phase-head">
+      <div class="phase-num">4</div>
+      <div>
+        <div class="phase-title">Polish, QA &amp; Launch</div>
+      </div>
+      <div class="phase-duration">WEEKS 9–11</div>
+    </div>
+    <div class="phase-tasks">
+      <div class="task"><div class="task-dot"></div>Mobile UX audit + PWA manifest</div>
+      <div class="task"><div class="task-dot"></div>SEO meta tags + sitemap.xml</div>
+      <div class="task"><div class="task-dot"></div>Performance optimisation (LCP &lt;2.5s)</div>
+      <div class="task"><div class="task-dot"></div>Security audit + HTTPS enforcement</div>
+      <div class="task"><div class="task-dot"></div>Deploy to Vercel + Railway</div>
+      <div class="task"><div class="task-dot"></div>UAT with Zelda + soft launch</div>
+    </div>
+  </div>
+
+  <!-- Timeline bar -->
+  <div class="timeline">
+    <div class="tl-seg" style="background:#6B1A2E">
+      <div class="tl-label" style="color:#C9A97A">PHASE 1</div>
+      <div class="tl-weeks" style="color:#F5ECD7">Wk 1–2</div>
+    </div>
+    <div class="tl-seg" style="background:#1B2A4A">
+      <div class="tl-label" style="color:#8BAFD4">PHASE 2</div>
+      <div class="tl-weeks" style="color:#F5ECD7">Wk 3–5</div>
+    </div>
+    <div class="tl-seg" style="background:#C9A97A">
+      <div class="tl-label" style="color:#6B1A2E">PHASE 3</div>
+      <div class="tl-weeks" style="color:#1B2A4A">Wk 6–8</div>
+    </div>
+    <div class="tl-seg" style="background:#8B2438">
+      <div class="tl-label" style="color:#F5ECD7">PHASE 4</div>
+      <div class="tl-weeks" style="color:#F5ECD7">Wk 9–11</div>
+    </div>
+  </div>
+
+  <div class="tl-total">
+    <div class="label">ESTIMATED TOTAL BUILD TIME</div>
+    <div class="val">~11 weeks to launch</div>
+  </div>
+
+  <div class="stack-row">
+    <div class="stack-head">RECOMMENDED STACK AT A GLANCE</div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="si-label">Frontend</div><div class="si-val">Next.js 14</div></div>
+      <div class="stack-item"><div class="si-label">Styling</div><div class="si-val">Tailwind CSS</div></div>
+      <div class="stack-item"><div class="si-label">State</div><div class="si-val">Zustand</div></div>
+      <div class="stack-item"><div class="si-label">Backend</div><div class="si-val">Node + Express</div></div>
+      <div class="stack-item"><div class="si-label">Database</div><div class="si-val">PostgreSQL</div></div>
+      <div class="stack-item"><div class="si-label">Cache</div><div class="si-val">Redis</div></div>
+      <div class="stack-item"><div class="si-label">Payments</div><div class="si-val">PayFast / Yoco</div></div>
+      <div class="stack-item"><div class="si-label">Maps</div><div class="si-val">Google Maps API</div></div>
+      <div class="stack-item"><div class="si-label">Email</div><div class="si-val">SendGrid</div></div>
+      <div class="stack-item"><div class="si-label">Images</div><div class="si-val">Cloudinary</div></div>
+      <div class="stack-item"><div class="si-label">Host (FE)</div><div class="si-val">Vercel</div></div>
+      <div class="stack-item"><div class="si-label">Host (API)</div><div class="si-val">Railway</div></div>
+    </div>
+  </div>
+</div>

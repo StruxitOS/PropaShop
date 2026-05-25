@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS CUSTOM PROPERTIES — PropaShop Brand Tokens ─────────────── */
+:root {
+  /* Primary brand */
+  --maroon:       #6B1A2E;
+  --maroon-dark:  #4A0F1E;
+  --maroon-light: #8B2438;
+  --navy:         #1B2A4A;
+  --navy-dark:    #0F1A30;
+  --navy-light:   #243560;
+  --cream:        #F5ECD7;
+  --cream-dark:   #D4C4A8;
+  --gold:         #C9A97A;
+  --gold-light:   #E8D8B8;
+  --gold-dark:    #8B6A3E;
+
+  /* Semantic */
+  --color-primary:    var(--maroon);
+  --color-secondary:  var(--navy);
+  --color-background: var(--cream);
+  --color-surface:    #FDFAF5;
+  --color-accent:     var(--gold);
+  --color-text:       var(--navy);
+  --color-text-muted: #6B6560;
+  --color-border:     #D4C4A8;
+  --color-success:    #2D6A3F;
+  --color-error:      #B91C1C;
+
+  /* Typography */
+  --font-serif: "Georgia", "Cambria", serif;
+  --font-sans:  "DM Sans", system-ui, sans-serif;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Shadows */
+  --shadow-luxury: 0 4px 24px rgba(107, 26, 46, 0.12), 0 1px 4px rgba(107, 26, 46, 0.08);
+  --shadow-card:   0 2px 12px rgba(27, 42, 74, 0.08);
+}
+
+/* ─── BASE RESETS ─────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--cream);
+  color: var(--navy);
+  min-height: 100dvh;
+}
+
+/* ─── TYPOGRAPHY UTILITIES ────────────────────────────────────────── */
+@layer components {
+  .font-display {
+    font-family: var(--font-serif);
+  }
+
+  .text-brand {
+    color: var(--maroon);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  /* Letter-spacing utility for brand headings */
+  .tracking-brand {
+    letter-spacing: 0.12em;
+  }
+
+  /* ─── BRAND BUTTON VARIANTS ─────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center font-sans font-medium
+           transition-all duration-200 cursor-pointer select-none;
+    font-family: var(--font-serif);
+    letter-spacing: 0.1em;
+  }
+
+  .btn-primary {
+    @apply btn px-8 py-3 text-xs tracking-widest uppercase;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 2px;
+  }
+  .btn-primary:hover {
+    background: var(--gold-dark);
+    color: var(--cream);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .btn-maroon {
+    @apply btn px-8 py-3 text-xs tracking-widest uppercase;
+    background: var(--maroon);
+    color: var(--cream);
+    border-radius: 2px;
+  }
+  .btn-maroon:hover {
+    background: var(--maroon-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .btn-outline {
+    @apply btn px-8 py-3 text-xs tracking-widest uppercase;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid var(--cream);
+    border-radius: 2px;
+  }
+  .btn-outline:hover {
+    background: var(--cream);
+    color: var(--navy);
+  }
+
+  .btn-outline-maroon {
+    @apply btn px-8 py-3 text-xs tracking-widest uppercase;
+    background: transparent;
+    color: var(--maroon);
+    border: 1px solid var(--maroon);
+    border-radius: 2px;
+  }
+  .btn-outline-maroon:hover {
+    background: var(--maroon);
+    color: var(--cream);
+  }
+
+  /* ─── SECTION LABEL (small caps above headings) ─────────────────── */
+  .section-label {
+    @apply text-2xs tracking-widest uppercase font-sans font-medium;
+    color: var(--gold);
+  }
+
+  /* ─── DIVIDER ────────────────────────────────────────────────────── */
+  .divider-gold {
+    @apply w-10 h-px mx-auto my-3;
+    background: var(--gold);
+  }
+
+  /* ─── CARD BASE ──────────────────────────────────────────────────── */
+  .card {
+    @apply rounded border overflow-hidden transition-all duration-300;
+    border-color: var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-luxury);
+    transform: translateY(-2px);
+  }
+
+  /* ─── SKELETON LOADER ────────────────────────────────────────────── */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #e8d8b8 25%,
+      #f5ecd7 50%,
+      #e8d8b8 75%
+    );
+    background-size: 400px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+  }
+
+  /* ─── BADGE / PILL ───────────────────────────────────────────────── */
+  .badge {
+    @apply inline-block px-3 py-1 text-2xs tracking-wide uppercase font-medium;
+    border-radius: 2px;
+  }
+  .badge-gold {
+    @apply badge;
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .badge-maroon {
+    @apply badge;
+    background: var(--maroon);
+    color: var(--cream);
+  }
+  .badge-navy {
+    @apply badge;
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  /* ─── INPUT ──────────────────────────────────────────────────────── */
+  .input {
+    @apply w-full px-4 py-3 text-sm transition-all duration-150 outline-none;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    color: var(--navy);
+    font-family: var(--font-sans);
+  }
+  .input::placeholder {
+    color: var(--color-text-muted);
+  }
+  .input:focus {
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 2px rgba(107, 26, 46, 0.1);
+  }
+
+  /* ─── SECTION WRAPPER ────────────────────────────────────────────── */
+  .section {
+    @apply px-4 py-12 md:px-8 lg:px-16;
+  }
+
+  .section-header {
+    @apply text-center mb-10;
+  }
+}
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--cream-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--maroon); }
+
+/* ─── SELECTION ───────────────────────────────────────────────────── */
+::selection {
+  background: var(--maroon);
+  color: var(--cream);
+}
