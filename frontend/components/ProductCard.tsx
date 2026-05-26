@@ -16,13 +16,22 @@ export default function ProductCard({
         background: "#fff",
       }}
     >
-      <div
-        style={{
-          height: "200px",
-          background: "#F5ECD7",
-          marginBottom: "15px",
-        }}
-      />
+<div
+  style={{
+    height: "200px",
+    background:
+      "linear-gradient(135deg,#F5ECD7,#E8D8B8)",
+    marginBottom: "15px",
+    borderRadius: "6px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#6B1A2E",
+    fontWeight: "bold",
+  }}
+>
+  Product Image
+</div>
 
       <h3>{title}</h3>
 
