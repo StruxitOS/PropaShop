@@ -9,6 +9,9 @@ export default function Navbar() {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      position: "sticky",
+top: "0",
+zIndex: "1000",
     }}>
       <span>PROPASHOP</span>
       <div style={{ display: "flex", gap: "32px", fontSize: "13px" }}>
