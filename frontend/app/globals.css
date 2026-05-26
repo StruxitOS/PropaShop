@@ -1,3 +1,10 @@
-body {
-  margin: 0;
+:root {
+  --maroon:    #6B1A2E;
+  --navy:      #1B2A4A;
+  --navy-dark: #0F1A30;
+  --cream:     #F5ECD7;
+  --gold:      #C9A97A;
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "DM Sans", system-ui, sans-serif; }
