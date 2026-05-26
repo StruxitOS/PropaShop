@@ -23,7 +23,7 @@ export default function Hero() {
         letterSpacing: "2px",
         fontSize: "13px",
       }}>
-        SHOP NOW
+        SHOP THE COLLECTION
       </button>
     </section>
   );

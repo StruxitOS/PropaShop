@@ -1,3 +1,4 @@
+"use client";
 type ProductCardProps = {
   title: string;
   price: string;
@@ -8,14 +9,24 @@ export default function ProductCard({
   price,
 }: ProductCardProps) {
   return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        padding: "20px",
-        background: "#fff",
-      }}
-    >
+<div
+  style={{
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    padding: "20px",
+    background: "#fff",
+    transition: "transform 0.3s ease",
+    cursor: "pointer",
+  }}
+
+  onMouseEnter={(e) =>
+    (e.currentTarget.style.transform = "translateY(-6px)")
+  }
+
+  onMouseLeave={(e) =>
+    (e.currentTarget.style.transform = "translateY(0px)")
+  }
+>
 <div
   style={{
     height: "200px",
